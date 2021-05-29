@@ -60,3 +60,4 @@ profile*
 # added new ignore
 node_modules
 build
+.env
