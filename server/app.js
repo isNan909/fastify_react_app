@@ -5,9 +5,12 @@ const AutoLoad = require('fastify-autoload');
 const mongoose = require('mongoose');
 
 try {
-  mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+  mongoose.connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
 } catch (e) {
-  console.error(e);
+  console.error(`You are not connected to your database! ${e}`);
 }
 
 module.exports = async function (fastify, opts) {
