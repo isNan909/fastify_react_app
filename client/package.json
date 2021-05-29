@@ -1,0 +1,23 @@
+{
+  "name": "fastify_react_app",
+  "version": "1.0.0",
+  "description": "A simple application built with fastify and react",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ishan-me/fastify_react_app.git"
+  },
+  "keywords": [
+    "fastify",
+    "node"
+  ],
+  "author": "Ishan Manandhar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ishan-me/fastify_react_app/issues"
+  },
+  "homepage": "https://github.com/ishan-me/fastify_react_app#readme"
+}
