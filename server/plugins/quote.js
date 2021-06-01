@@ -12,7 +12,7 @@ const quotes = [
   'Programs must be written for people to read, and only incidentally for machines to execute.',
   'Weeks of coding can save you hours of planning.',
 ];
-
+ 
 const randomValue = (param) => {
   return param[Math.floor(Math.random() * quotes.length)];
 };
@@ -22,3 +22,4 @@ module.exports = fp(async function (fastify, _opts) {
     return randomValue(quotes);
   });
 });
+ 
