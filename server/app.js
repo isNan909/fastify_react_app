@@ -14,6 +14,7 @@ try {
 }
 
 module.exports = async function (fastify, opts) {
+  fastify.register(require('fastify-cors'));
   // Place here your custom code!
 
   // Do not touch the following lines
