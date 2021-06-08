@@ -14,7 +14,6 @@ try {
 }
 
 module.exports = async function (fastify, opts) {
-  fastify.register(require('fastify-cors'));
   // Place here your custom code!
 
   // Do not touch the following lines
@@ -22,6 +21,9 @@ module.exports = async function (fastify, opts) {
   // This loads all plugins defined in plugins
   // those should be support plugins that are reused
   // through your application
+
+  fastify.register(require('fastify-cors'));
+
   fastify.register(AutoLoad, {
     dir: path.join(__dirname, 'plugins'),
     options: Object.assign({}, opts),
