@@ -8,9 +8,9 @@ function Notelist() {
   return (
     <div>
       <p>Notelisting page</p>
-      {notes.map((notes) => {
-        <div>{notes.id}</div>;
-      })}
+      {notes.map((notes) => (
+        <div>{notes.id}</div>
+      ))}
     </div>
   );
 }
