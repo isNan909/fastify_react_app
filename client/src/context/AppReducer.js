@@ -6,6 +6,12 @@ export default function appReducer(state, action) {
         notes: [...state.notes, action.payload],
       };
 
+    case 'ADD_ALL_NOTES':
+      return {
+        ...state,
+        notes: [...action.payload],
+      };
+
     case 'EDIT_NOTES':
       const updateNote = action.payload;
       const updateNotes = state.notes.map((note) => {

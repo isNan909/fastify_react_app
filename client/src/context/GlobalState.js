@@ -18,6 +18,13 @@ export const GlobalProvider = ({ children }) => {
     });
   }
 
+  function addAllNote(notes) {
+    dispatch({
+      type: 'ADD_ALL_NOTES',
+      payload: notes,
+    });
+  }
+
   function editNote(note) {
     dispatch({
       type: 'EDIT_NOTES',
@@ -39,6 +46,7 @@ export const GlobalProvider = ({ children }) => {
         addNote,
         editNote,
         removeNote,
+        addAllNote,
       }}
     >
       {children}

@@ -1,11 +1,10 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import { GlobalContext } from '../context/GlobalState';
 
 function Notelist() {
-  const [response, setResponse] = useState([]);
-  const { notes, removeNote } = useContext(GlobalContext);
+  const { notes, removeNote, addAllNote } = useContext(GlobalContext);
 
   useEffect(() => {
     getNotes();
@@ -21,8 +20,7 @@ function Notelist() {
     })
       .then((response) => response.json())
       .then((data) => {
-        notes.push(...data);
-        setResponse(notes);
+        addAllNote(data);
       })
       .catch((error) => {
         console.log(error);
@@ -35,7 +33,7 @@ function Notelist() {
           <span>+ Add notes</span>
         </button>
       </Link>
-      {response.map((notes) => (
+      {notes.map((notes) => (
         <div key={notes._id}>
           <div>
             <p>{notes.title}</p>
