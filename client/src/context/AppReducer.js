@@ -28,7 +28,7 @@ export default function appReducer(state, action) {
 
     case 'GET_ONE_NOTE':
       const getNote = action.payload;
-      const getOneNote = state.notes.map((note) => {
+      const getOneNote = state.notes.filter((note) => {
         if (note.id === getNote.id) {
           return getNote;
         }

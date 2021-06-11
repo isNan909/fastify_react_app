@@ -7,6 +7,7 @@ function Notelist() {
   const { notes, removeNote, addAllNote } = useContext(GlobalContext);
 
   useEffect(() => {
+    console.log(notes);
     getNotes();
     // eslint-disable-next-line
   }, []);
@@ -28,7 +29,6 @@ function Notelist() {
   }
 
   async function deleteNotes(id) {
-    console.log(id);
     await fetch(process.env.REACT_APP_SECRET_URL + '/' + id, {
       method: 'DELETE',
       headers: {

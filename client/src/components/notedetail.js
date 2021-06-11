@@ -6,7 +6,7 @@ import { GlobalContext } from '../context/GlobalState';
 function NoteDetail(route) {
   const { notes, getOneNote } = useContext(GlobalContext);
   const [selectedNotes, setselectedNotes] = useState({
-    id: '',
+    _id: '',
     title: '',
     description: '',
     date: '',
