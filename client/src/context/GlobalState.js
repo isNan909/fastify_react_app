@@ -32,6 +32,14 @@ export const GlobalProvider = ({ children }) => {
     });
   }
 
+
+  function getOneNote(id) {
+    dispatch({
+      type: 'GET_ONE_NOTE',
+      payload: id,
+    });
+  }
+
   function removeNote(id) {
     dispatch({
       type: 'DELETE_NOTE',
@@ -47,6 +55,7 @@ export const GlobalProvider = ({ children }) => {
         editNote,
         removeNote,
         addAllNote,
+        getOneNote
       }}
     >
       {children}

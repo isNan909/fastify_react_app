@@ -26,6 +26,23 @@ function Notelist() {
         console.log(error);
       });
   }
+
+  async function deleteNotes(id) {
+    console.log(id);
+    await fetch(process.env.REACT_APP_SECRET_URL + '/' + id, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((id) => {
+        removeNote(id);
+        getNotes();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
   return (
     <>
       <Link to="/add">
@@ -44,7 +61,7 @@ function Notelist() {
           <Link to={`/edit/${notes._id}`}>
             <div>edit</div>
           </Link>
-          <button onClick={() => removeNote(notes._id)}>delete</button>
+          <button onClick={() => deleteNotes(notes._id)}>delete</button>
         </div>
       ))}
     </>

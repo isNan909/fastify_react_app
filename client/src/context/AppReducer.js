@@ -6,6 +6,7 @@ export default function appReducer(state, action) {
         notes: [...state.notes, action.payload],
       };
 
+    //gets all notes from database
     case 'ADD_ALL_NOTES':
       return {
         ...state,
@@ -23,6 +24,19 @@ export default function appReducer(state, action) {
       return {
         ...state,
         notes: updateNotes,
+      };
+
+    case 'GET_ONE_NOTE':
+      const getNote = action.payload;
+      const getOneNote = state.notes.map((note) => {
+        if (note.id === getNote.id) {
+          return getNote;
+        }
+        return note;
+      });
+      return {
+        ...state,
+        notes: getOneNote,
       };
 
     case 'DELETE_NOTE':
