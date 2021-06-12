@@ -11,17 +11,22 @@ function Notenew() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-
     const newNote = {
       title,
       description,
       date,
     };
 
-    fetch(process.env.REACT_APP_SECRET_URL, {
+    const request = new Request(process.env.REACT_APP_SECRET_URL, {
       method: 'POST',
-    })
-      .then(addNote(newNote))
+      body: JSON.stringify(newNote),
+      headers: new Headers({
+        'Content-Type': 'application/json',
+      }),
+    });
+
+    fetch(request)
+      .then(addNote(JSON.stringify(newNote)))
       .catch((error) => {
         console.log(error);
       });
