@@ -1,10 +1,9 @@
 import { useContext, useEffect, useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { GlobalContext } from '../context/GlobalState';
 
 function Noteedit(route) {
-  let history = useHistory();
   const { notes, getOneNote, addNote } = useContext(GlobalContext);
   const [selectedNotes, setselectedNotes] = useState({
     _id: '',
@@ -47,7 +46,13 @@ function Noteedit(route) {
 
     fetch(request)
       .then(addNote(JSON.stringify(selectedNotes)))
-      .then(history.push('/'))
+      .then(
+        setselectedNotes({
+          title: '',
+          description: '',
+          date: '',
+        })
+      )
 
       .catch((error) => {
         console.log(error);
@@ -61,7 +66,7 @@ function Noteedit(route) {
     <div>
       <div className="mb-[5px]">
         <Link to="/">
-          <button> 
+          <button>
             <span className="flex items-center">
               <svg
                 width="20"
@@ -86,7 +91,9 @@ function Noteedit(route) {
       <h1 className="font-bold text-3xl mb-[40px]">Create a Note.</h1>
       <form onSubmit={onSubmit}>
         <div className="flex flex-col mb-6">
-          <label className="font-bold text-sm mb-2" htmlFor="Title">Title</label>
+          <label className="font-bold text-sm mb-2" htmlFor="Title">
+            Title
+          </label>
           <input
             type="text"
             className="w-full border-2 rounded-sm p-3"
@@ -96,7 +103,9 @@ function Noteedit(route) {
           />
         </div>
         <div className="flex flex-col mb-6">
-          <label className="font-bold text-sm mb-2" htmlFor="text">Description</label>
+          <label className="font-bold text-sm mb-2" htmlFor="text">
+            Description
+          </label>
           <textarea
             type="description"
             className="w-full border-2 rounded-sm p-3"
@@ -106,7 +115,9 @@ function Noteedit(route) {
           />
         </div>
         <div className="flex flex-col mb-6">
-          <label className="font-bold text-sm mb-2" htmlFor="text">Text</label>
+          <label className="font-bold text-sm mb-2" htmlFor="text">
+            Text
+          </label>
           <input
             type="text"
             value={selectedNotes.date}

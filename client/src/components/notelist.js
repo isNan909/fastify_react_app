@@ -61,7 +61,7 @@ function Notelist() {
           <div>
             {notes.map((notes) => (
               <div
-                className="rounded-md border p-5 border-gray-100 shadow-sm"
+                className="rounded-md border p-5 border-gray-100 shadow-sm mb-4"
                 key={notes._id}
               >
                 <div>

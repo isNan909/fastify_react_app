@@ -1,9 +1,10 @@
 import { useState, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import { GlobalContext } from '../context/GlobalState';
 
 function Notenew() {
+  let history = useHistory();
   const { addNote } = useContext(GlobalContext);
 
   const [title, setTitle] = useState('');
@@ -13,7 +14,7 @@ function Notenew() {
   const onSubmit = (e) => {
     e.preventDefault();
     const newNote = {
-      title,
+      title, 
       description,
       date,
     };
@@ -28,6 +29,7 @@ function Notenew() {
 
     fetch(request)
       .then(addNote(newNote))
+      .then(history.push('/'))
       .catch((error) => {
         console.log(error);
       });
