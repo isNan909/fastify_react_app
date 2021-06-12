@@ -12,7 +12,12 @@ function NoteDetail(route) {
     date: '',
   });
 
-  async function getGithubData() {
+  useEffect(() => {
+    getNotesData();
+        // eslint-disable-next-line
+  }, []);
+
+  async function getNotesData() {
     const currentNoteId = route.match.params.id;
     let response = await fetch(
       process.env.REACT_APP_SECRET_URL + '/' + currentNoteId
@@ -22,30 +27,9 @@ function NoteDetail(route) {
       console.log('error fetching data');
     }
     getOneNote(data);
-    const selectedNote = notes.find((note) => data.id === note.id);
+    const selectedNote = notes.find((note) => data._id === note.id);
     setselectedNotes(selectedNote);
   }
-
-  useEffect(() => {
-    getGithubData();
-
-    // fetch(process.env.REACT_APP_SECRET_URL + '/' + currentNoteId, {
-    //   method: 'GET',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    // })
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     getOneNote(data);
-    //     const selectedNote = notes.find((note) => data._id === note._id);
-    //     setselectedNotes(selectedNote);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
-    // eslint-disable-next-line
-  }, []);
 
   return (
     <div>
