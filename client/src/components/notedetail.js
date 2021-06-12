@@ -28,7 +28,6 @@ function NoteDetail(route) {
     }
     getOneNote(data);
     const selectedNote = notes.find((note) => currentNoteId === note._id);
-    console.log(selectedNote);
     setselectedNotes(selectedNote);
   }
 

@@ -28,27 +28,13 @@ function Noteedit(route) {
     }
     getOneNote(data);
     const selectedNote = notes.find((note) => currentNoteId === note._id);
-    console.log(
-      '🚀 ~ file: noteedit.js ~ line 30 ~ getNotesData ~ selectedNote',
-      selectedNote
-    );
-
-    // const selectedCatalogueItem = catalogueItems.find(catalogueItem => catalogueItem.sku === catalogueItemSku);
-    // setSeletedCatalogueItem(selectedCatalogueItem);
-
-    // employees.find(
-    //   (currentEmployeeTraversal) => currentEmployeeTraversal.id === parseInt(employeeId)
-    // );
-    // console.log(selectedNote._id);
     setselectedNotes(selectedNote);
   }
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(selectedNotes._id);
-
-    const request = new Request(process.env.REACT_APP_SECRET_URL, {
-      method: 'POST',
+    const request = new Request(process.env.REACT_APP_SECRET_URL + '/' + selectedNotes._id, {
+      method: 'PUT',
       body: JSON.stringify(selectedNotes),
       headers: new Headers({
         'Content-Type': 'application/json',
@@ -67,11 +53,13 @@ function Noteedit(route) {
 
   return (
     <div>
-      <Link to="/">
-        <button>
-          <span>Go back</span>
-        </button>
-      </Link>
+      <div>
+        <Link to="/">
+          <button>
+            <span>Go back</span>
+          </button>
+        </Link>
+      </div>
       <form onSubmit={onSubmit}>
         <div>
           <label htmlFor="text">Text</label>

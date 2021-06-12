@@ -1,4 +1,5 @@
 import { useState, useContext } from 'react';
+import { Link } from 'react-router-dom'
 
 import { GlobalContext } from '../context/GlobalState';
 
@@ -26,7 +27,7 @@ function Notenew() {
     });
 
     fetch(request)
-      .then(addNote(JSON.stringify(newNote)))
+      .then(addNote(newNote))
       .catch((error) => {
         console.log(error);
       });
@@ -35,6 +36,13 @@ function Notenew() {
   return (
     <div>
       <p>This is note new page. Add new note here.</p>
+      <div>
+        <Link to="/">
+          <button>
+            <span>Go back</span>
+          </button>
+        </Link>
+      </div>
       <form onSubmit={onSubmit}>
         <div>
           <label htmlFor="text">Text</label>
