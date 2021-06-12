@@ -7,7 +7,6 @@ function Notelist() {
   const { notes, removeNote, addAllNote } = useContext(GlobalContext);
 
   useEffect(() => {
-    console.log(notes);
     getNotes();
     // eslint-disable-next-line
   }, []);

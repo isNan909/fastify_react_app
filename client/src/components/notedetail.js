@@ -12,24 +12,38 @@ function NoteDetail(route) {
     date: '',
   });
 
-  useEffect(() => {
+  async function getGithubData() {
     const currentNoteId = route.match.params.id;
-    fetch(process.env.REACT_APP_SECRET_URL + '/' + currentNoteId, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        getOneNote(data);
-        const selectedNote = notes.find((note) => data._id === note._id);
-        console.log(selectedNote);
-        setselectedNotes(selectedNote);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    let response = await fetch(
+      process.env.REACT_APP_SECRET_URL + '/' + currentNoteId
+    );
+    const data = response.json();
+    if (!response.ok) {
+      console.log('error fetching data');
+    }
+    getOneNote(data);
+    const selectedNote = notes.find((note) => data.id === note.id);
+    setselectedNotes(selectedNote);
+  }
+
+  useEffect(() => {
+    getGithubData();
+
+    // fetch(process.env.REACT_APP_SECRET_URL + '/' + currentNoteId, {
+    //   method: 'GET',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    // })
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     getOneNote(data);
+    //     const selectedNote = notes.find((note) => data._id === note._id);
+    //     setselectedNotes(selectedNote);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
     // eslint-disable-next-line
   }, []);
 
