@@ -27,7 +27,8 @@ function NoteDetail(route) {
       console.log('error fetching data');
     }
     getOneNote(data);
-    const selectedNote = notes.find((note) => data._id === note.id);
+    const selectedNote = notes.find((note) => currentNoteId === note._id);
+    console.log(selectedNote);
     setselectedNotes(selectedNote);
   }
 

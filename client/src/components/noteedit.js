@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import { GlobalContext } from '../context/GlobalState';
 
@@ -26,10 +27,12 @@ function Noteedit(route) {
       console.log('error fetching data');
     }
     getOneNote(data);
-    const selectedNote = notes.find((note) => data.id === note.id);
-    console.log("🚀 ~ file: noteedit.js ~ line 30 ~ getNotesData ~ selectedNote", selectedNote)
+    const selectedNote = notes.find((note) => currentNoteId === note._id);
+    console.log(
+      '🚀 ~ file: noteedit.js ~ line 30 ~ getNotesData ~ selectedNote',
+      selectedNote
+    );
 
-  
     // const selectedCatalogueItem = catalogueItems.find(catalogueItem => catalogueItem.sku === catalogueItemSku);
     // setSeletedCatalogueItem(selectedCatalogueItem);
 
@@ -64,6 +67,11 @@ function Noteedit(route) {
 
   return (
     <div>
+      <Link to="/">
+        <button>
+          <span>Go back</span>
+        </button>
+      </Link>
       <form onSubmit={onSubmit}>
         <div>
           <label htmlFor="text">Text</label>
