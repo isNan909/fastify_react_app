@@ -6,7 +6,6 @@ export default function appReducer(state, action) {
         notes: [...state.notes, action.payload],
       };
 
-    //gets all notes from database
     case 'ADD_ALL_NOTES':
       return {
         ...state,

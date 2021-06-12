@@ -12,7 +12,9 @@ ReactDOM.render(
     <Headerbar />
     <BrowserRouter>
       <GlobalProvider>
-        <App />
+        <div className="max-w-3xl mx-auto">
+          <App />
+        </div>
       </GlobalProvider>
     </BrowserRouter>
   </React.StrictMode>,
